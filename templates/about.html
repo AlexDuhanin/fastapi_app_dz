@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}О сайте{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <h1>О сайте</h1>
+        <p><strong>Название:</strong> {{ site_name }}</p>
+        <p><strong>Разработчик:</strong> {{ developer }}</p>
+        <p><strong>Описание:</strong> {{ description }}</p>
+    </div>
+</div>
+{% endblock %}
