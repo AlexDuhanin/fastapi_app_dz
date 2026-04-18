@@ -4,20 +4,17 @@ from typing import List, Optional
 
 router = APIRouter()
 
-# Модель данных для книги
 class Book(BaseModel):
     id: int
     title: str
     author: str
     year: Optional[int] = None
 
-# В памяти хранилище (для демонстрации)
 books_db = [
     Book(id=1, title="1984", author="Джордж Оруэлл", year=1949),
     Book(id=2, title="451° по Фаренгейту", author="Рэй Брэдбери", year=1953),
 ]
 
-# Роутер для книг
 books_router = APIRouter(prefix="/books", tags=["books"])
 
 @books_router.get("/", response_model=List[Book])
@@ -39,5 +36,4 @@ async def create_book(book: Book):
     books_db.append(book)
     return book
 
-# Подключаем вложенный роутер
 router.include_router(books_router)

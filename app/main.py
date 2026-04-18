@@ -6,13 +6,10 @@ import os
 
 app = FastAPI(title="My Website")
 
-# Правильный путь к статическим файлам
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# Инициализация шаблонов — путь должен указывать на папку templates в корне проекта
 templates = Jinja2Templates(directory="templates")
 
-# Подключение API роутера
 app.include_router(api_router, prefix="/api")
 
 @app.get("/")
